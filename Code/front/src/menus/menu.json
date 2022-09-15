@@ -1,0 +1,78 @@
+{
+  "menu_admin": [
+    {
+      "text": "Inicio",
+      "icon": "mdi-home-silo-outline",
+      "icon_color": "accent",
+      "to": {
+        "name": "dashboard_admin"
+      }
+    },
+    {
+      "text": "Informes",
+      "icon": "mdi-book",
+      "icon_color": "accent",
+      "to": {
+        "name": "records"
+      }
+    },
+    {
+      "text": "Perfil",
+      "icon": "mdi-account-circle",
+      "icon_color": "accent",
+      "to": {
+        "name": "config-user"
+      }
+    },
+    {
+      "text": "Usuarios",
+      "icon": "mdi-account-group",
+      "icon_color": "accent",
+      "state_sub_menu": false,
+      "sub": [
+        {
+          "text": "Registrar usuario",
+          "icon": "mdi-account-plus",
+          "icon_color": "success",
+          "to": {
+            "name": "create-user"
+          }
+        },
+        {
+          "text": "Gestionar usuarios",
+          "icon": "mdi-account-details",
+          "icon_color": "blue",
+          "to": {
+            "name": "admin-user"
+          }
+        }
+      ]
+    }
+  ],
+  "menu_user": [
+    {
+      "text": "Perfil",
+      "icon": "mdi-account-circle",
+      "icon_color": "accent",
+      "to": {
+        "name": "config-user"
+      }
+    },
+    {
+      "text": "Inicio",
+      "icon": "mdi-home",
+      "icon_color": "accent",
+      "to": {
+        "name": "home"
+      }
+    },
+    {
+      "text": "Ver puestos disponibles",
+      "icon": "mdi-car",
+      "icon_color": "accent",
+      "to": {
+        "name": "scan-point"
+      }
+    }
+  ]
+}
