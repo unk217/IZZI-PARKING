@@ -27,7 +27,7 @@ export default {
             ...RES.data[id],
           });
         }
-        console.log(available_station);
+
         commit("_setStationAvalible", {
           list: "get_station",
           res: available_station,
@@ -36,12 +36,12 @@ export default {
         console.error("_loadStation", error);
       }
     },
-    async postRecord_({ commit }, { DATA }) {
+    async _postLocation({ commit }, { DATA }) {
       try {
         const RES = await postData({ header: { x_token: NEKOT }, method: "POST", url: `record`, data: DATA });
         return RES;
       } catch (error) {
-        console.error("postRecord_", error);
+        console.error("_postLocation", error);
       }
     },
     async getRecord_({ commit }, { record }) {
