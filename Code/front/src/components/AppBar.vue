@@ -13,37 +13,15 @@
           content
         />
       </div>
-      <h3
-        @click="$router.push({ path: '/main' })"
-        class="white--text text-title cursor"
-      >
-        IZZI PARKING
-      </h3>
+      <h3 @click="$router.push({ path: '/main' })" class="white--text text-title cursor">IZZI PARKING</h3>
       <v-spacer></v-spacer>
-      <v-menu
-        :close-on-content-click="false"
-        transition="fab-transition"
-        origin="top right"
-        :nudge-width="200"
-      >
+      <v-menu :close-on-content-click="false" transition="fab-transition" origin="top right" :nudge-width="200">
         <template v-slot:activator="{ on, attrs }">
           <v-icon size="15" color="white" class="botone">mdi-menu-down</v-icon>
           <v-hover v-slot="{ hover }" open-delay="60">
-            <v-avatar
-              :elevation="hover ? 24 : 0"
-              class="py-0 mt-1 botone"
-              v-bind="attrs"
-              color="white"
-              v-on="on"
-              size="30"
-            >
+            <v-avatar :elevation="hover ? 24 : 0" class="py-0 mt-1 botone" v-bind="attrs" color="white" v-on="on" size="30">
               <span class="primary--text text-h7">
-                {{
-                  `${current_user.name.slice(
-                    0,
-                    1
-                  )}${current_user.last_name.slice(0, 1)} `
-                }}
+                {{ `${current_user.name.slice(0, 1)}${current_user.last_name.slice(0, 1)} ` }}
               </span>
             </v-avatar>
           </v-hover>
@@ -53,56 +31,31 @@
             <v-list-item>
               <v-list-item-avatar size="40" color="primary" class="botone">
                 <span class="white--text mx-auto">
-                  {{
-                    `${current_user.name.slice(
-                      0,
-                      1
-                    )}${current_user.last_name.slice(0, 1)} `
-                  }}
+                  {{ `${current_user.name.slice(0, 1)}${current_user.last_name.slice(0, 1)} ` }}
                 </span>
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-subtitle class="text-title">
-                  <v-chip
-                    v-if="current_user.level_user == 'ADMIN'"
-                    color="secondary"
-                  >
+                  <v-chip v-if="current_user.level_user == 'ADMIN'" color="secondary">
                     ADMINISTRADOR
-                    <v-icon color="white" small class="botone ml-2">
-                      mdi-shield-account
-                    </v-icon>
+                    <v-icon color="white" small class="botone ml-2"> mdi-shield-account </v-icon>
                   </v-chip>
                   <v-chip v-else color="primary">
                     CELADOR
-                    <v-icon color="white" small class="botone ml-2">
-                      mdi-account-badge
-                    </v-icon>
+                    <v-icon color="white" small class="botone ml-2"> mdi-account-badge </v-icon>
                   </v-chip>
                 </v-list-item-subtitle>
               </v-list-item-content>
 
               <v-list-item-action class="botone">
-                <v-btn
-                  small
-                  :class="
-                    current_user.level_user == 'ADMIN'
-                      ? 'green--text'
-                      : 'primary--text'
-                  "
-                  @click="fav = !fav"
-                  icon
-                >
+                <v-btn small :class="current_user.level_user == 'ADMIN' ? 'green--text' : 'primary--text'" @click="fav = !fav" icon>
                   <v-icon> mdi-circle </v-icon>
                 </v-btn>
               </v-list-item-action>
             </v-list-item>
             <v-divider></v-divider>
             <v-list-item class="py-0" style="min-height: 35px">
-              <v-list-item-title
-                class="py-0 text-md-h7 primary--text text-title"
-              >
-                {{ date.time }}, {{ date.fech }}
-              </v-list-item-title>
+              <v-list-item-title class="py-0 text-md-h7 primary--text text-title"> {{ date.time }}, {{ date.fech }} </v-list-item-title>
             </v-list-item>
             <v-list-item class="ml-0 primary--text">
               <v-list-item-title class="text-title">
@@ -124,9 +77,7 @@
                   dark
                 >
                   Configurar cuenta
-                  <v-icon class="ml-2" color="white" size="20" dark>
-                    mdi-account-cog
-                  </v-icon>
+                  <v-icon class="ml-2" color="white" size="20" dark> mdi-account-cog </v-icon>
                 </v-btn>
               </v-hover>
             </v-list-item>
@@ -143,9 +94,7 @@
                   dark
                 >
                   Cerrar sesión
-                  <v-icon class="ml-2" color="white" size="30">
-                    mdi-exit-to-app
-                  </v-icon>
+                  <v-icon class="ml-2" color="white" size="30"> mdi-exit-to-app </v-icon>
                 </v-btn>
               </v-hover>
             </v-list-item>
@@ -153,14 +102,7 @@
         </v-card>
       </v-menu>
     </v-app-bar>
-    <ALERT
-      @cancelAlert="cancelAlert()"
-      @confirm="confirm()"
-      @exitEsc="cancel()"
-      @cancel="cancel()"
-      v-if="alert.state"
-      :alert="alert"
-    ></ALERT>
+    <ALERT @cancelAlert="cancelAlert()" @confirm="confirm()" @exitEsc="cancel()" @cancel="cancel()" v-if="alert.state" :alert="alert"></ALERT>
   </div>
 </template>
 <script>
@@ -214,8 +156,7 @@ export default {
     },
   },
   created() {
-    if (this.$route.name && this.$route.name == "dashboard_admin")
-      this.menu_opcion = false;
+    if (this.$route.name && this.$route.name == "dashboard_admin") this.menu_opcion = false;
   },
 };
 </script>

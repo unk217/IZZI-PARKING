@@ -64,6 +64,15 @@ const routes = [
         },
       },
       {
+        path: "/availablepositions",
+        name: "available-positions",
+        component: () => import("../views/AvailablePositions.vue"),
+        meta: {
+          requiresAuth: true,
+          title: `${TITLE} - Puestos Disponibles`,
+        },
+      },
+      {
         path: "/config-user",
         name: "config-user",
         component: () => import("../views/ConfigUser.vue"),

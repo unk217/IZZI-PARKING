@@ -26,10 +26,10 @@
     },
     {
       "text": "Puestos disponibles",
-      "icon": "mdi-car",
+      "icon": "mdi-database",
       "icon_color": "accent",
       "to": {
-        "name": "puestos-disponibles"
+        "name": "available-positions"
       }
     },
     {
@@ -63,30 +63,6 @@
       "to": {
         "name": "ayuda"
       }
-    },
-    {
-      "text": "Usuarios",
-      "icon": "mdi-account-group",
-      "icon_color": "accent",
-      "state_sub_menu": false,
-      "sub": [
-        {
-          "text": "Registrar usuario",
-          "icon": "mdi-account-plus",
-          "icon_color": "success",
-          "to": {
-            "name": "create-user"
-          }
-        },
-        {
-          "text": "Gestionar usuarios",
-          "icon": "mdi-account-details",
-          "icon_color": "blue",
-          "to": {
-            "name": "admin-user"
-          }
-        }
-      ]
     }
   ],
   "menu_user": [
