@@ -5,4 +5,4 @@ import { login, createUser } from "../controllers/users";
 export const Route_User = express.Router();
 
 Route_User.get("/login", login);
-Route_User.post("/create&users", createUser);
+Route_User.post("/create&users", JwtValidator, createUser);

@@ -11,8 +11,6 @@ const LocationSchema = new Schema<Location>(
     type: {
       type: String,
       required: true,
-      default: "Carro",
-      enum: ["Carro", "Moto"],
     },
     state: {
       type: String,
