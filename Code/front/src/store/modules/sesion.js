@@ -12,14 +12,11 @@ export default {
     async loginUser_({ commit }, data) {
       try {
         const { user, password } = data;
-        const RES = await postData({ url: `login?document=${user}&password=${password}`, method: "GET", data });
+        const RES = await postData({ url: `login?user=${user}&password=${password}`, method: "GET", data });
         if (!RES.msg) {
-          if (RES.data.state == "INACTIVE") {
-            return "user_inac";
-          }
-          const BASE64 = btoa(JSON.stringify(RES));
+          const BASE64 = JSON.stringify(RES);
           sessionStorage.auth_code = BASE64;
-          location.reload();
+          // location.reload();
         } else {
           return RES;
         }

@@ -4,18 +4,19 @@ import { User_Model } from "../models/model.user";
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const { document, password } = req.query;
+    const { user, password } = req.query;
+
     const data = await User_Model.findOne(
       {
-        $and: [{ document: document }, { password: password }],
+        $and: [{ username: user }, { password: password }],
       },
       { password: 0 }
     );
     if (data) {
-      const DATA = btoa(JSON.stringify(data));
+      const DATA = JSON.stringify(data);
       const TOKEN = await generarJwt(data.id);
       res.json({ DATA, TOKEN });
-    } else res.json({ A: "No fount :c" });
+    } else res.json({ A: "Datos incorrectos" });
   } catch (error) {
     res.json({ msg: error });
   }

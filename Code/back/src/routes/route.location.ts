@@ -5,4 +5,4 @@ import { getAllLocation, addLocation } from "../controllers/controller.location"
 export const LocationRoute = express.Router();
 
 LocationRoute.get("/get&location", JwtValidator_, getAllLocation);
-LocationRoute.post("/add&location", JwtValidator_, addLocation);
+LocationRoute.post("/add&location", addLocation);

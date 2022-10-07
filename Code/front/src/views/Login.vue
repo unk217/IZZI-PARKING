@@ -195,6 +195,7 @@ export default {
     },
     async login() {
       const DATA = this.form;
+
       if (!DATA.user) return this.sendAlert("user_0", "info", null, null);
       try {
         const RES = await this.loginUser_(DATA);

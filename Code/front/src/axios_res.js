@@ -2,9 +2,7 @@ import { default as axios } from "axios";
 import { convertToObject } from "typescript";
 import index from "./store/index";
 
-const URI = "https://eoniaseguridad.herokuapp.com/api/";
-// const URI = "http://192.168.0.174:9090/api/";
-// const URI = "http://localhost:9000/api/";
+const URI = "http://localhost:5000/api/";
 
 const axiosSc = ({ url, data = {}, method = "POST", header = {}, responseType = "json" }) => {
   return new Promise((resolve, reject) => {
@@ -29,7 +27,7 @@ const axiosSc = ({ url, data = {}, method = "POST", header = {}, responseType = 
         index.commit("loadingState_", null, { root: true });
       })
       .catch((error) => {
-        convertToObject.log("hh")
+        convertToObject.log("hh");
         let response = { status: -1, message: null };
         if (error.response) {
           response.status = error.response.status;
