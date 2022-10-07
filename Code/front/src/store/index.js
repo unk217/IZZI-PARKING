@@ -3,11 +3,11 @@ import Vue from "vue";
 
 Vue.use(Vuex);
 
+import parking from "./modules/parking";
 import sesion from "./modules/sesion";
 import record from "./modules/record";
 import user from "./modules/user";
 import zone from "./modules/zone";
-import parking from "./modules/parking";
 
 export default new Vuex.Store({
   state: {

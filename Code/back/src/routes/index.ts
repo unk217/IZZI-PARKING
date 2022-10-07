@@ -1,3 +1,5 @@
-import { Route_User } from "./users";
+import { RouteUser } from "./route.user";
+import { LocationRoute } from "./route.location";
 
-export const Users = Route_User;
+export const Users = RouteUser;
+export const Locations = LocationRoute;

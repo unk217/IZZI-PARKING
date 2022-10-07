@@ -25,6 +25,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("API funcionado :)");
 });
 app.use("/api", routes.Users);
+app.use("/api", routes.Locations);
 
 //********Routes*******
 

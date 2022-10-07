@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { generarJwt } from "../helpers/jwtGenerator";
-import { User_Model } from "../models/users";
+import { User_Model } from "../models/model.user";
 
 export const login = async (req: Request, res: Response) => {
   try {
