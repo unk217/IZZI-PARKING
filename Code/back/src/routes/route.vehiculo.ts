@@ -4,4 +4,6 @@ import { JwtValidator_ } from "../helpers/validators";
 export const RouteUser = express.Router();
 
 RouteUser.get("/get&vehiculos");
-RouteUser.post("/create&vehiculos", JwtValidator_);
+RouteUser.get("/get&vehiculo", JwtValidator_);
+RouteUser.post("/create&vehiculo", JwtValidator_);
+RouteUser.put("/edit&vehiculo", JwtValidator_);
