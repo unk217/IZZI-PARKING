@@ -23,9 +23,11 @@ export default {
         console.error("createUser_", error);
       }
     },
-    async getUsers_({ commit }) {
+    async _getUsers({ commit }) {
       try {
-        const RES = await postData({ header: { x_token: NEKOT }, method: "GET", url: `users` });
+        console.log("_getUser");
+        const RES = await postData({ header: { x_token: NEKOT }, method: "GET", url: `get&users` });
+        console.log(RES);
         if (!RES.msg) {
           commit("setUserData_", {
             list: "get_users",
@@ -36,10 +38,10 @@ export default {
           return RES;
         }
       } catch (error) {
-        console.error("getUsers_", error);
+        console.error("_getUsers", error);
       }
     },
-    async putUser_({ commit }, { USER, password, data }) {
+    async _putUser({ commit }, { USER, password, data }) {
       try {
         const RES = await postData({
           url: `users/${USER}/${password}`,
@@ -49,7 +51,7 @@ export default {
         });
         return RES;
       } catch (error) {
-        console.error("putUser_", error);
+        console.error("_putUser", error);
       }
     },
     async putUserNoPassword_({ commit }, { USER, data }) {
@@ -62,7 +64,7 @@ export default {
         });
         return RES;
       } catch (error) {
-        console.error("putUser_", error);
+        console.error("_putUser", error);
       }
     },
     async deleteUser_({ commit }, { USER }) {

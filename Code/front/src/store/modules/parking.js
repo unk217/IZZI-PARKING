@@ -17,6 +17,7 @@ export default {
   },
   actions: {
     async _loadStation({ commit }) {
+      console.log("_loadStation");
       try {
         const RES = await journalApi.get("/Puestos.json");
 

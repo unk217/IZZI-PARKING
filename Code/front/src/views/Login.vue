@@ -1,6 +1,5 @@
 <template>
   <v-card style="height: 100%">
-    <!-- <v-container class="fill-height"> -->
     <v-img :src="require('../assets/image/fondo.jpg')" style="height: 100%" class="mx-auto" disabled>
       <v-hover v-slot="{ hover }" open-delay="100">
         <v-card :elevation="hover ? 12 : 10" :loading="state_loading" class="mx-auto my-8" width="400" shaped>
@@ -110,15 +109,7 @@
       </v-hover>
     </v-img>
     <ALERT @cancelAlert="cancelAlert()" @confirm="confirm()" @exitEsc="cancel()" @cancel="cancel()" v-if="alert.state" :alert="alert"></ALERT>
-    <DialogRegistrarCuenta
-      v-if="dialog_registro === true"
-      v-model="dialog_registro"
-      :dialog="dialog_registro"
-      @cancelarSalir="dialog_registro = false"
-      @dialog="dialog_registro = false"
-    ></DialogRegistrarCuenta>
   </v-card>
-  <!-- </v-container> -->
 </template>
 
 <script>
@@ -162,7 +153,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      loginUser_: "sesion/loginUser_",
+      _loginUser: "sesion/_loginUser",
     }),
     cancelAlert() {
       this.deletAlert();
@@ -180,7 +171,7 @@ export default {
       switch (this.change) {
         case "user":
           if (value == "") {
-            this.sendAlert("user_0", "info", null, null);
+            this.sendAlert("user_0", "info");
             return false;
           } else {
             return true;
@@ -196,17 +187,9 @@ export default {
     async login() {
       const DATA = this.form;
 
-      if (!DATA.user) return this.sendAlert("user_0", "info", null, null);
+      if (!DATA.user) return this.sendAlert("user_0", "info");
       try {
-        const RES = await this.loginUser_(DATA);
-        RES.status === 0 && this.sendAlert("serv_0", "error", null, null);
-
-        if (RES) {
-          this.sendAlert("user_inac", "error", null, null);
-          RES.msg && this.sendAlert("user_2", "error", null, null);
-          RES === 0 && this.sendAlert("serv_0", "error", null, null);
-          RES.status == -1 && this.sendAlert("serv_0", "error", null, null);
-        }
+        const RES = await this._loginUser(DATA);
       } catch (error) {
         console.error("LOGIN", error);
       }

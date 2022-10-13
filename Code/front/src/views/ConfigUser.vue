@@ -18,55 +18,35 @@
               <v-list-item>
                 <v-list-item-avatar size="40" color="primary" class="botone">
                   <span class="white--text mx-auto">
-                    {{
-                      `${current_user.name.slice(
-                        0,
-                        1
-                      )}${current_user.last_name.slice(0, 1)} `
-                    }}
+                    {{ `${current_user.name.slice(0, 1)}${current_user.last_name.slice(0, 1)} ` }}
                   </span>
                 </v-list-item-avatar>
 
                 <v-list-item-content>
                   <v-list-item-title class="text-title">
-                    <v-chip
-                      v-if="current_user.level_user == 'ADMIN'"
-                      color="secondary"
-                    >
+                    <v-chip v-if="current_user.level_user == 'ADMIN'" color="secondary">
                       ADMINISTRADOR
-                      <v-icon color="white" small class="botone ml-2">
-                        mdi-shield-account
-                      </v-icon>
+                      <v-icon color="white" small class="botone ml-2"> mdi-shield-account </v-icon>
                     </v-chip>
                     <v-chip v-else color="primary">
                       CELADOR
-                      <v-icon color="white" small class="botone ml-2">
-                        mdi-account-badge
-                      </v-icon>
+                      <v-icon color="white" small class="botone ml-2"> mdi-account-badge </v-icon>
                     </v-chip>
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
               <v-list-item class="ml-0">
-                <v-list-item-title class="text-title">
-                  Nombres: {{ current_user.name }}
-                </v-list-item-title>
+                <v-list-item-title class="text-title"> Nombres: {{ current_user.name }} </v-list-item-title>
               </v-list-item>
               <v-list-item class="ml-0">
-                <v-list-item-title class="text-title">
-                  Apellidos: {{ current_user.last_name }}
-                </v-list-item-title>
+                <v-list-item-title class="text-title"> Apellidos: {{ current_user.last_name }} </v-list-item-title>
               </v-list-item>
               <v-list-item class="ml-0">
-                <v-list-item-title class="text-title">
-                  Telefono: {{ ` ${current_user.phone_number}` }}
-                </v-list-item-title>
+                <v-list-item-title class="text-title"> Telefono: {{ ` ${current_user.phone_number}` }} </v-list-item-title>
               </v-list-item>
               <v-list-item class="ml-0">
-                <v-list-item-title class="text-title">
-                  Documento: {{ ` ${current_user.document}` }}
-                </v-list-item-title>
+                <v-list-item-title class="text-title"> Documento: {{ ` ${current_user.document}` }} </v-list-item-title>
               </v-list-item>
             </v-list>
           </v-card-text>
@@ -74,25 +54,12 @@
         <v-card elevation="12" class="mt-6">
           <v-card-text class="primary--text">
             <h2 class="text-title text-center py-4">Cambiar contraseña</h2>
-            <v-form
-              class="mx-auto"
-              ref="form_change_password"
-              v-model="valid_change_password"
-              lazy-validation
-            >
+            <v-form class="mx-auto" ref="form_change_password" v-model="valid_change_password" lazy-validation>
               <v-row justify="center" align="center" class="mt-2 px-4">
                 <v-col cols="12" lg="12" sm="12" md="12" class="py-0 px-2">
                   <v-text-field
-                    :append-icon="
-                      showPassword_current ? 'mdi-eye' : 'mdi-eye-off'
-                    "
-                    @keypress.enter="
-                      nextAction(
-                        form_change_password,
-                        change,
-                        validate(form_change_password.current_password)
-                      )
-                    "
+                    :append-icon="showPassword_current ? 'mdi-eye' : 'mdi-eye-off'"
+                    @keypress.enter="nextAction(form_change_password, change, validate(form_change_password.current_password))"
                     @click:append="showPassword_current = !showPassword_current"
                     :type="showPassword_current ? 'text' : 'password'"
                     @focus="change = 'current_password'"
@@ -113,14 +80,7 @@
                 <v-col cols="12" lg="12" sm="12" md="12" class="py-0 px-2">
                   <v-text-field
                     :append-icon="showPassword_new ? 'mdi-eye' : 'mdi-eye-off'"
-                    @keypress.enter="
-                      nextAction(
-                        form_change_password,
-                        change,
-                        validate(form_change_password.new_password),
-                        changePassword()
-                      )
-                    "
+                    @keypress.enter="nextAction(form_change_password, change, validate(form_change_password.new_password), changePassword())"
                     @keydown.esc="nextAction(form_change_password, change)"
                     @click:append="showPassword_new = !showPassword_new"
                     v-model="form_change_password.new_password"
@@ -139,15 +99,7 @@
                     dense
                   ></v-text-field>
                 </v-col>
-                <v-btn
-                  @click="$refs.form_change_password.reset()"
-                  class="mb-2 mx-2"
-                  justify="center"
-                  color="warning"
-                  filled
-                  shaped
-                  dense
-                >
+                <v-btn @click="$refs.form_change_password.reset()" class="mb-2 mx-2" justify="center" color="warning" filled shaped dense>
                   <v-icon class="ml-1">mdi-lock-reset</v-icon>
                 </v-btn>
                 <v-btn
@@ -172,17 +124,13 @@
       <v-col cols="12" lg="7" sm="7" md="7">
         <v-card elevation="12">
           <v-card-text class="primary--text">
-            <h2 class="text-title text-center py-4">
-              Cambiar información de la cuenta
-            </h2>
+            <h2 class="text-title text-center py-4">Cambiar información de la cuenta</h2>
             <v-form ref="form" v-model="valid" lazy-validation>
               <v-row justify="center" class="mt-2 px-4">
                 <v-col cols="12" lg="6" sm="6" md="6" class="py-0 px-2">
                   <v-text-field
                     @keydown.esc="nextAction(form, change, validate(form.name))"
-                    @keypress.enter="
-                      nextAction(form, change, validate(form.name))
-                    "
+                    @keypress.enter="nextAction(form, change, validate(form.name))"
                     @focus="change = 'name'"
                     :onblur="(validate_current_password = false)"
                     @input="form.name = nameToUper(form.name)"
@@ -200,12 +148,8 @@
                 </v-col>
                 <v-col cols="12" lg="6" sm="6" md="6" class="py-0 px-2">
                   <v-text-field
-                    @keydown.esc="
-                      nextAction(form, change, validate(form.last_name), null)
-                    "
-                    @keypress.enter="
-                      nextAction(form, change, validate(form.last_name))
-                    "
+                    @keydown.esc="nextAction(form, change, validate(form.last_name), null)"
+                    @keypress.enter="nextAction(form, change, validate(form.last_name))"
                     @input="form.last_name = nameToUper(form.last_name)"
                     @focus="change = 'last_name'"
                     v-model="form.last_name"
@@ -223,12 +167,8 @@
                 <v-col cols="12" lg="6" sm="6" md="6" class="py-0 px-2">
                   <v-text-field
                     onkeypress="return (event.charCode > 47 && event.charCode < 123)"
-                    @keydown.esc="
-                      nextAction(form, change, validate(form.document))
-                    "
-                    @keypress.enter="
-                      nextAction(form, change, validate(form.document))
-                    "
+                    @keydown.esc="nextAction(form, change, validate(form.document))"
+                    @keypress.enter="nextAction(form, change, validate(form.document))"
                     @focus="change = 'document'"
                     label="Numero de cedula"
                     v-model="form.document"
@@ -246,10 +186,7 @@
                     onkeypress="return (event.charCode > 47 && event.charCode < 123)"
                     @keypress.enter="nextAction(form, change, true)"
                     @keydown.esc="nextAction(form, change, true)"
-                    @focus="
-                      (change = 'phone_number'),
-                        (validate_current_password = false)
-                    "
+                    @focus="(change = 'phone_number'), (validate_current_password = false)"
                     v-model="form.phone_number"
                     label="Numero de celular"
                     ref="phone_number"
@@ -266,14 +203,7 @@
                 <v-col cols="12" lg="6" sm="6" md="6" class="py-0 px-2">
                   <v-text-field
                     :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                    @keypress.enter="
-                      nextAction(
-                        form,
-                        change,
-                        validate(form.password),
-                        saveChange()
-                      )
-                    "
+                    @keypress.enter="nextAction(form, change, validate(form.password), saveChange())"
                     @click:append="showPassword = !showPassword"
                     :type="showPassword ? 'text' : 'password'"
                     @keydown.esc="nextAction(form, change)"
@@ -292,13 +222,7 @@
                     dense
                   ></v-text-field>
                 </v-col>
-                <v-col
-                  cols="12"
-                  lg="12"
-                  sm="12"
-                  md="12"
-                  class="py-0 text-center"
-                >
+                <v-col cols="12" lg="12" sm="12" md="12" class="py-0 text-center">
                   <v-btn
                     :loading="state_loading"
                     :disabled="!valid"
@@ -318,13 +242,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <ALERT
-        v-if="alert.state"
-        :alert="alert"
-        @exitEsc="cancel()"
-        @cancel="cancel()"
-        @confirm="confirm()"
-      ></ALERT>
+      <ALERT v-if="alert.state" :alert="alert" @exitEsc="cancel()" @cancel="cancel()" @confirm="confirm()"></ALERT>
     </v-row>
   </v-container>
 </template>
@@ -362,15 +280,8 @@ export default {
     valid_change_password: true,
     valid: true,
 
-    rules_name: [
-      (v) => !!v || "Nombre es requerido",
-      (v) => (v && v.length <= 30) || "Nombre no puede tener mas de 30 letras",
-    ],
-    rules_last_name: [
-      (v) => !!v || "Apellido es requerido",
-      (v) =>
-        (v && v.length <= 30) || "Apellido no puede tener mas de 30 letras",
-    ],
+    rules_name: [(v) => !!v || "Nombre es requerido", (v) => (v && v.length <= 30) || "Nombre no puede tener mas de 30 letras"],
+    rules_last_name: [(v) => !!v || "Apellido es requerido", (v) => (v && v.length <= 30) || "Apellido no puede tener mas de 30 letras"],
     max_length_number: "10",
     max_length_document: "10",
     rules_password: [
@@ -415,8 +326,8 @@ export default {
     nameToUper,
     phoneNumberImask,
     ...mapActions({
-      getUsers_: "user/getUsers_",
-      putUser_: "user/putUser_",
+      _getUsers: "user/_getUsers",
+      _putUser: "user/_putUser",
       validPassword_: "user/validPassword_",
     }),
     cancel() {
@@ -485,7 +396,7 @@ export default {
           const data = {
             password: this.form_change_password.new_password,
           };
-          const RES = await this.putUser_({ USER, password, data });
+          const RES = await this._putUser({ USER, password, data });
           if (RES) {
             this.$refs.form_change_password.reset();
             return this.sendAlert("pass_1", "success", null, null);
@@ -496,8 +407,7 @@ export default {
     },
     async saveChange() {
       this.$refs.form.validate();
-      if (this.validate_document)
-        return this.sendAlert("doc_1", "info", null, null);
+      if (this.validate_document) return this.sendAlert("doc_1", "info", null, null);
       if (this.$refs.form.validate()) {
         for (let i in this.form) {
           if (![this.form[i], undefined].includes(this.current_user[i])) {
@@ -511,7 +421,7 @@ export default {
           const data = JSON.parse(JSON.stringify(this.form_change));
           const { password } = this.form;
           const USER = current_user.document;
-          const RES = await this.putUser_({ USER, password, data });
+          const RES = await this._putUser({ USER, password, data });
           if (RES.S) {
             this.sendAlert("user_put", "success", null, null);
             let auth = JSON.parse(atob(sessionStorage.auth_code));
@@ -530,7 +440,7 @@ export default {
     phoneNumberImask();
   },
   created() {
-    this.getUsers_();
+    this._getUsers();
   },
 };
 </script>

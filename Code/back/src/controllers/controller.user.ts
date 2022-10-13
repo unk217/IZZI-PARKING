@@ -13,12 +13,20 @@ export const login = async (req: Request, res: Response) => {
       { password: 0 }
     );
     if (data) {
-      const DATA = JSON.stringify(data);
+      const DATA = data;
       const TOKEN = await generarJwt(data.id);
       res.json({ DATA, TOKEN });
     } else res.json({ A: "Datos incorrectos" });
   } catch (error) {
     res.json({ msg: error });
+  }
+};
+export const getusers = async (req: Request, res: Response) => {
+  try {
+    const data = await User_Model.find({}, { password: 0 });
+    res.json(data);
+  } catch (error) {
+    res.json({ msg: "user-get" });
   }
 };
 export const createUser = async (req: Request, res: Response) => {
@@ -30,5 +38,7 @@ export const createUser = async (req: Request, res: Response) => {
         res.json({ S: "success" });
       }
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };

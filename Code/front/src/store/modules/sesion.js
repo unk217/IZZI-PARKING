@@ -9,19 +9,18 @@ export default {
     },
   },
   actions: {
-    async loginUser_({ commit }, data) {
+    async _loginUser({ commit }, data) {
       try {
         const { user, password } = data;
         const RES = await postData({ url: `login?user=${user}&password=${password}`, method: "GET", data });
         if (!RES.msg) {
           const BASE64 = JSON.stringify(RES);
-          sessionStorage.auth_code = BASE64;
-          // location.reload();
-        } else {
-          return RES;
-        }
+          sessionStorage.auth_code = btoa(BASE64);
+          location.reload();
+        } else return RES;
       } catch (error) {
-        console.error("loginUser_", error);
+        console.error("_loginUser", error);
+        return error;
       }
     },
   },

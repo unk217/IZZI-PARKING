@@ -14,9 +14,6 @@
       <v-col cols="12" lg="12" md="12" sm="12">
         <v-card elevation="4" @click="$router.push('/scan-point')">
           <v-alert border="top" colored-border type="info" elevation="4">
-            Recuerda que al escanear el codigo QR enviaremos la posición en la
-            que te encuentras para evitar que los registros de las rondas se
-            hagan incorrectamente.
             <lottie-animation
               :animationData="welcome"
               class="mx-auto botone"

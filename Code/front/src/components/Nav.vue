@@ -47,7 +47,7 @@ export default {
     menu: [],
   }),
   created() {
-    this.current_user.level_user == "ADMIN"
+    ["SP", "ADMIN"].includes(this.current_user.level_user)
       ? (this.menu = JSON.parse(JSON.stringify(Menu.menu_admin)))
       : (this.menu = JSON.parse(JSON.stringify(Menu.menu_user)));
   },

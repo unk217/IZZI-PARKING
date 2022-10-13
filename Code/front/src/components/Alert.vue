@@ -158,6 +158,9 @@ export default {
         case "user_error":
           this.body = `Error creando usuario`;
           break;
+        case "user-get":
+          this.body = `Error creando usuario`;
+          break;
         case "user_inac":
           this.body = `Usuario inactivo, imposible acceder`;
           break;

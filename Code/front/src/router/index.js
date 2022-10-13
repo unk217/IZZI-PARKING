@@ -105,8 +105,9 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   const currentUser = auth ? JSON.parse(atob(auth)) : null;
+
   if (requiresAuth && !currentUser) next("Login");
-  else if (!requiresAuth && currentUser && currentUser.data.level_user == "ADMIN" && to.path != "/admin") {
+  else if (!requiresAuth && currentUser && ["ADMIN", "SP"].includes(currentUser.DATA.level_user) && to.path != "/admin") {
     next("admin");
   } else if (!requiresAuth && currentUser && to.path !== "/home") next("home");
   else next();

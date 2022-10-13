@@ -22,8 +22,7 @@ export function format_fecha(fecha, id) {
 }
 export function variable_num({ val, max = 0, decimal = undefined }) {
   let v_mask;
-  let comas =
-    max < 3 ? 0 : max % 3 === 0 ? Math.trunc(max / 3) - 1 : Math.trunc(max / 3);
+  let comas = max < 3 ? 0 : max % 3 === 0 ? Math.trunc(max / 3) - 1 : Math.trunc(max / 3);
   let first_num = max % 3 === 0 ? 3 : max % 3;
   v_mask = Array.from({ length: max + comas }, (v, i) => {
     if (first_num !== 0 && i == first_num) return ",";
@@ -98,5 +97,5 @@ export function nameToUper(field) {
 }
 
 const AUTH = sessionStorage.auth_code;
-export let current_user = AUTH ? JSON.parse(atob(AUTH)).data : null;
-export const NEKOT = AUTH ? JSON.parse(atob(AUTH)).token : null;
+export let current_user = AUTH ? JSON.parse(atob(AUTH)).DATA : null;
+export const NEKOT = AUTH ? JSON.parse(atob(AUTH)).TOKEN : null;

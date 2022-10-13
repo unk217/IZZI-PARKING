@@ -9,7 +9,7 @@
       }
     },
     {
-      "text": "Reservas",
+      "text": "Calendario",
       "icon": "mdi-calendar-account",
       "icon_color": "accent",
       "to": {
