@@ -21,7 +21,7 @@ export const login = async (req: Request, res: Response) => {
     res.json({ msg: error });
   }
 };
-export const getusers = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
     const data = await User_Model.find({}, { password: 0 });
     res.json(data);
